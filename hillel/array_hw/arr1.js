@@ -7,7 +7,7 @@
 
 // У міру змін виводити вміст масиву на сторінку.
 
-let arrLenth = +prompt('Введіть довжину массиву', 0);
+let arrLength = +prompt('Введіть довжину массиву', 0);
 let arrValues = [];
 
 for (let index = 0; index < arrLenth; index++) {
