@@ -28,11 +28,12 @@ targtArr.forEach(element => {
     if(element > maxVal){
         maxVal=element;    
     } 
+    minNum=targtArr.indexOf(minVal); //after corect, thank 4 your attention
     maxNum=targtArr.indexOf(maxVal);
 });
 
-//  console.log(`minVal:${minVal},minNum:${minNum}`);
-//  console.log(`maxVal:${maxVal},maxNum:${maxNum}`);
+//   console.log(`minVal:${minVal},minNum:${minNum}`);
+//   console.log(`maxVal:${maxVal},maxNum:${maxNum}`);
 
 /*  additional way Math methods */
 const _minVal = arr => arr.reduce((accum, element) => Math.min(accum, element));
@@ -84,8 +85,15 @@ return mult;
 
 // console.log(`Добуток позитивних елементів: ${res}`);
 
+
+// const targtArr = [-16,-37,-54,-4,-72,-56]; пробний від"ємний массив, закоментувати вище
+
 // Знайти найбільший серед елементів масиву, ост альні обнулити.
-const maxValue =  targtArr.reduce((accum, element) => Math.max(accum, element),0);
+const maxValue =  targtArr.reduce((accum, element) => Math.max(accum, element),); //(+)
+/**знайшов щодо елементу ініціалізації reduce (якщо я у Math.max передам 0 то при всіх від"ємних 
+ * я не отримаю жодного результату, але якщо не передавати у reduce стартове значення,
+ *  то він візьме результат роботи ф-ції після першого ж проходу, а в нашому випадку це не нуль!) */
+
 maxNum=targtArr.indexOf(maxValue);
 // console.log('Max='+maxValue+' n='+maxNum);
 
@@ -95,5 +103,5 @@ targtArr.fill(0, maxNum+1);
 // targtArr.fill(0, 0);
 // targtArr[maxNum] = maxVal; 
 
-//  console.log('найбільший серед елементів масиву, інщі обнулити ',targtArr);
+ // console.log('найбільший серед елементів масиву, інщі обнулити ',targtArr);
 
