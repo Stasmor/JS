@@ -79,8 +79,7 @@ for (const elem of OddPosArr) {
 
 // Знайти добуток позитивних елементів.
 const res = targtArr.reduce((mult,elem)=>{
-mult = (elem > 0) ? mult*elem: mult ;
-return mult;
+return (elem > 0) ? mult*elem : mult;
 },1)
 
 // console.log(`Добуток позитивних елементів: ${res}`);
