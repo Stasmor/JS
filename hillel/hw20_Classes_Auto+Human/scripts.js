@@ -62,12 +62,10 @@ class Car {
             this.regNumber ='AT'+Math.round(Math.random()*643) +'EE'
 
             if(this.concern === 'БТР' && human.name === 'Валерій Залужний') this.regNumber = 'HIMARS'; //it's a joke, sorry ;-)
-
-            //this.owner.name === null ? this.owner = human : console.log('неможливо, машина вже має власника!');
-            //якщо ми не хочемо щоб була можливість зміни власника
+            
         }else{
-            console.log(`Вік ${human.name} не дозволяє володіти машиною, зачекайте ${18-human.age} років`);
-            this.owner.name = null;//машина без власника, поки;-)
+            console.log(`Вік: ${human.name} не дозволяє володіти машиною, зачекайте ${18-human.age} років`);
+            this.owner.name = null;//now car w-o owner
             this.owner.age = 0;
             this.regNumber = null
         }
@@ -82,8 +80,11 @@ class Car {
         console.log('реє-й номер:',this.regNumber);
         
         console.groupEnd();
-        this.owner.showHuman();//переробіть метод та вкиличте його як метод класу Людина, екземпляр якого зберігається у властивості власник
-        //Human.prototype.showHuman(this.owner.name,this.owner.age);
+        if(this.owner.name !== null){
+            this.owner.showHuman();//переробіть метод та вкиличте його як метод класу Людина, екземпляр якого зберігається у властивості власник
+        }else{
+            console.log('Власник на даний момент відсутній');
+        }
 
     }
 }    
@@ -91,6 +92,7 @@ class Car {
     let Car1 = new Car('Volvo','V70++',2024,'empty');
     let Car2 = new Car('Renault','Sandero',2022,'empty');
     let Car3 = new Car('БТР','\"4\"',22,'HIMARS');
+    let Car4 = new Car('ЗАЗ','965',1842,'empty');
 
     let hum0 = new Human('Zla Marichka',17);
     let hum1 = new Human('Валерій Залужний',49);
@@ -112,3 +114,4 @@ class Car {
     Car3.setOwner(hum1);
     Car3.showInfo();
 
+    Car4.showInfo();//show car without owner 
