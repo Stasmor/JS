@@ -41,8 +41,8 @@ class Human {
         this.name=name ;
         this.age=age;
     }
-    showHuman(Name,Age){
-        console.log(`  Owner name: ${Name}, age:${Age}`);//this.name this.age
+    showHuman(){
+        console.log(`  Name: ${this.name}, age:${this.age}`);//this.name this.age
     }
 }
 
@@ -56,11 +56,11 @@ class Car {
 
         
     }
-    set_owner(human){
+    setOwner(human){
         if(human.age >= 18){
             this.owner = human;
             this.regNumber ='AT'+Math.round(Math.random()*643) +'EE'
-            
+
             if(this.concern === 'БТР' && human.name === 'Валерій Залужний') this.regNumber = 'HIMARS'; //it's a joke, sorry ;-)
 
             //this.owner.name === null ? this.owner = human : console.log('неможливо, машина вже має власника!');
@@ -82,8 +82,8 @@ class Car {
         console.log('реє-й номер:',this.regNumber);
         
         console.groupEnd();
-          
-        Human.prototype.showHuman(this.owner.name,this.owner.age);
+        this.owner.showHuman();//переробіть метод та вкиличте його як метод класу Людина, екземпляр якого зберігається у властивості власник
+        //Human.prototype.showHuman(this.owner.name,this.owner.age);
 
     }
 }    
@@ -97,18 +97,18 @@ class Car {
     let hum2 = new Human('Богдан Хмельницький',249);
    
 
-    Car1.set_owner(hum2); 
+    Car1.setOwner(hum2); 
     Car1.showInfo();
 
-    Car1.set_owner(hum1);
+    Car1.setOwner(hum1);
     Car1.showInfo();
 
-    Car2.set_owner(hum2);
+    Car2.setOwner(hum2);
     Car2.showInfo();
 
-    Car2.set_owner(hum0);
+    Car2.setOwner(hum0);
     Car2.showInfo();
 
-    Car3.set_owner(hum1);
+    Car3.setOwner(hum1);
     Car3.showInfo();
 
