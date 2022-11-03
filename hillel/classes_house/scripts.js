@@ -10,7 +10,11 @@ class Human {
 class Flat{
     humans = [];
     addOccup(occup){   
-        this.humans.push(occup); //new Human(occupName,gender)
+        if(occup instanceof Human){//checking waiting type of arg.
+            this.humans.push(occup);
+        }else{
+            alert(`Err, this argument is\'nt a Human! `);
+        }
     };
 }
 
@@ -20,16 +24,21 @@ class House{
         this.flats = [];
     };
 
+
     addFlat(flatIn){
-        if(this.flats.length < this.flatQtt ){
-            // this.flats.push(newFlat(flatIn));  //заповнення массиву глибокими копіями обьекту квартири методом рекурсії(newFlat())
-            this.flats.push(JSON.parse(JSON.stringify(flatIn)));  //заповнення массиву копіями обьекту квартири..
-        } else{
-            alert(`House is full, can\'t add new Flat!`)
+        if(flatIn instanceof Flat){ //checking waiting type of arg.
+            if(this.flats.length < this.flatQtt ){
+                this.flats.push(flatIn);   //заповнення массиву об"єктами квартир
+            } else{
+                alert(`House is full, can\'t add new Flat!`);
+            }
+        }else{
+            alert(`Err, this argument is\'nt a Flat! `);
         }
-    };
+    }
 
 }
+
 
 let human1 = new Human('Stanislav','M');
 let human2 = new Human('Tanya','F');
@@ -51,6 +60,7 @@ let flat_2 = new Flat();
 let House1 = new House(2);
 House1.addFlat(flat_1);
 House1.addFlat(flat_2);
+//House1.addFlat(human1);//4 checking wrong input
 
 
 console.log('After:',House1);
