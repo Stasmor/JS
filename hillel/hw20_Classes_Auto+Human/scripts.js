@@ -70,6 +70,9 @@ class Car {
             this.regNumber = null
         }
     }
+
+
+
     showInfo(){
         
         console.group('Відомості про машину:')
@@ -80,14 +83,28 @@ class Car {
         console.log('реє-й номер:',this.regNumber);
         
         console.groupEnd();
-        if(this.owner.name !== null){
-            this.owner.showHuman();//переробіть метод та вкиличте його як метод класу Людина, екземпляр якого зберігається у властивості власник
+        if(this.owner.name !== null && this.owner.__proto__.hasOwnProperty('showHuman')){//+checking null value of 'owner.name' and just check present method 'showHuman' in owner object
+            this.owner.showHuman();           
         }else{
             console.log('Власник на даний момент відсутній');
         }
 
-    }
+    };
+
+
 }    
+
+let listAllProperties = function(o){
+
+    var objectToInspect;
+    var result = [];
+  
+    for(objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)){
+      result = result.concat(Object.getOwnPropertyNames(objectToInspect));
+    }
+  
+    return result;
+  };
 
     let Car1 = new Car('Volvo','V70++',2024,'empty');
     let Car2 = new Car('Renault','Sandero',2022,'empty');
@@ -98,9 +115,8 @@ class Car {
     let hum1 = new Human('Валерій Залужний',49);
     let hum2 = new Human('Богдан Хмельницький',249);
    
-
-    Car1.setOwner(hum2); 
-    Car1.showInfo();
+     Car1.setOwner(hum2); 
+     Car1.showInfo();
 
     Car1.setOwner(hum1);
     Car1.showInfo();
