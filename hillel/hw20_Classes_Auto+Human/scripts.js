@@ -47,12 +47,13 @@ class Human {
 }
 
 class Car {
+    owner;
     constructor(conc, model, year, regNum) {
         this.concern = conc;
         this.model = model;
         this.madeYear = year;
         this.regNumber = regNum;
-        this.owner = {name:null,age:0}
+        // this.owner = {name:null,age:0}
 
         
     }
@@ -83,7 +84,10 @@ class Car {
         console.log('реє-й номер:',this.regNumber);
         
         console.groupEnd();
-        if(this.owner.name !== null && this.owner.__proto__.hasOwnProperty('showHuman')){//+checking null value of 'owner.name' and just check present method 'showHuman' in owner object
+            
+          // console.log(`Defined? ${this.owner === undefined}`);
+        if(this.owner !== undefined){
+           
             this.owner.showHuman();           
         }else{
             console.log('Власник на даний момент відсутній');
@@ -94,17 +98,6 @@ class Car {
 
 }    
 
-let listAllProperties = function(o){
-
-    var objectToInspect;
-    var result = [];
-  
-    for(objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)){
-      result = result.concat(Object.getOwnPropertyNames(objectToInspect));
-    }
-  
-    return result;
-  };
 
     let Car1 = new Car('Volvo','V70++',2024,'empty');
     let Car2 = new Car('Renault','Sandero',2022,'empty');
