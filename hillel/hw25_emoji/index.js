@@ -44,6 +44,8 @@ container.addEventListener('click',(ev)=>{
   
   const target = (ev.target.innerText); //case with inner text of button
   const nowNum=reactions.indexOf(target);//case with inner text of button
+  
+  if(nowNum === -1) return;
 
   // const nowNum=ev.target.id; //or case with ID on button
 
