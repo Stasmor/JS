@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            place-items: center;
+            gap: 1rem;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        li:active {
+            color: blue;
+        }
+
+        button {
+            padding: 0.5rem 2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <ul id="categories">
+            </ul>
+            <ul id="products" hidden>
+            </ul>
+            <div>
+                <div id="description" hidden>
+                    To be or not to be, what is the question here?
+                    The only question is where such questions come from, especially if beer and meat have already been prepared...;-)
+                </div>
+                <button id="buy-button" hidden>Buy</button>
+                <div id="message" hidden>The product has been added to the basket</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
