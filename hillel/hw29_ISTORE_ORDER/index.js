@@ -175,8 +175,8 @@ const orders = [];
 
 function categoryUpd(list) {
   
-  var letters='Category:';
-  for (var i = 0; i < list.length; i++) {
+  let letters='Category:';
+  for (let i = 0; i < list.length; i++) {
       letters += `<li data-category-id=\"${i+1}\">` + list[i].category + "</li>";
   }
  cat.innerHTML = letters;
@@ -187,8 +187,8 @@ categoryUpd(categories);
 ///////////////////////////////////////////////////////////////////////
 
 function productsUpd(list,cat_id) { 
-    var letters='Products:';
-    for (var i = 0; i < list.length; i++) {
+    let letters='Products:';
+    for (let i = 0; i < list.length; i++) {
      // console.log(`category_id=${list[i].category_id} cat_id=${cat_id}`); 
      if(list[i].category_id !== Number(cat_id)) continue;
      letters += `<li data-product-id=\"${i+1}\">` + list[i].name + "</li>";
@@ -229,7 +229,7 @@ function handlerProductClick(ev){
 
   descript.innerText=products[selId-1].description;//HTML = document.createTextNode(products[selProduct].description) ;
 
-  order.price = products[selId-1].price; //
+  order.price = products[selId-1].price; //selected item price *qtt
 
   descript.removeAttribute('hidden');
   buttonBasket.removeAttribute('hidden');
