@@ -57,9 +57,7 @@
                 
                 <button id="basket-button" hidden>Add2Basket</button>
                 <br/>
-                <button id="buy-button" hidden>Buy</button>
-                <br/>
-
+                
                 <form name = "order-info"  id="order-info" hidden >
                     <fieldset>
                     <legend>Please fill all fields-info!</legend>
@@ -70,7 +68,7 @@
                     <br/>
                     <label for="city">Your City:</label>
                     <select name="city" id="city"  required>Your City:
-
+                        
                         <option value="0">Your City</option>
                         <option value="1">Kyiv</option>
                         <option value="2">Odesa</option>
@@ -83,26 +81,29 @@
                     <input type="number" name="depotNum" id="depotNum" min="1", max="100" placeholder="0"  required>
                     <br/>
                     <br/>
-                        
+                    
                     <fieldset>
                         <legend>Method paying:</legend>
-                    <label for="payCash">Afterpay Cash</label>
+                        <label for="payCash">Afterpay Cash</label>
                         <input type="radio" name="payMeth" id="payCash">
-                    <br>
+                        <br>
                         <label for="payCard"> Card(VISA/MC)</label>
                         <input type="radio" name="payMeth" id="payCard" >
-                    <br>
+                        <br>
                     </fieldset>
-                        
+                    
                     <br>  
-                        <label for="itemQtt">Qtt item?</label>
-                        <input type="number" name="itemQtt" id="itemQtt" min="0" placeholder="0" required>
+                    <label for="itemQtt">Qtt item?</label>
+                    <input type="number" name="itemQtt" id="itemQtt" min="0" placeholder="0" required>
                     <br>
 
+                    <button id="buy-button" hidden>Buy</button>
+                    <br/>
+                    
                     <p id="error" style="color:red ;">
                     </p>
                 </fieldset>
-                </form>
+            </form>
                 <br>
                 <div id="message" hidden>The product has been added to the basket</div>
             </div>

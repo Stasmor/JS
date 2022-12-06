@@ -287,8 +287,8 @@ function checkOrderField(){
     let err = '';
     if(order.costName.length === 0) err+='empty Costumer name; ';
     if(order.city === "Your City") err+='empty Costumer city; ';
-    if(order.depotNum == 0) err+='empty Depot number; ';
-    if(order.itemQtt == 0) err+='zero items in order; ';
+    if(order.depotNum <= 0) err+='wrong(negative) or zero Depot number; ';
+    if(order.itemQtt <= 0) err+='wrong(negative) or zero qtt items in order; ';
     if(err === '') return err; else return 'Error: '+err;
 }
 
