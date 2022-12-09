@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .outer-wrapper {
+            display: table;
+            width: 50px;
+            
+        }
+
+        .outer {
+            
+            display: table-cell;
+            width: 45px;
+            
+        }
+        .inner {
+            
+            width: 60px;
+            height: 30px;
+            margin: 20px;
+        }
+    /* .outer {
+        position: relative;
+    }
+
+    .inner {
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+    } */
+
+    /* .outer {
+        position: relative;
+    }
+
+    .inner {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    } */
+
+        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 0.5fr 0.5fr 1fr 0.5fr;
+            place-items: center;
+            gap: 1rem;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        li:active {
+            color: blue;
+        }
+
+        button {
+            
+            padding: 0.5rem 1rem;
+            margin: 1rem ;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Spend your money with pleasure...</h1>
+    <br>
+    <div class="wrapper">
+        <div class="container">
+            <ul id="categories">
+            </ul>
+
+            <div class="outer-wrapper">
+                <div class="outer"> 
+                </div>
+            </div>
+            
+            <ul id="products" hidden>
+            </ul>
+            <div>
+                <div id="description" hidden>
+                    To be or not to be, what is the question here?
+                    The only question is where such questions come from, especially if beer and meat have already been prepared...;-)
+                </div>
+                
+                <button id="basket-button" hidden>Add2Basket</button>
+                <br/>
+                                
+                <button id="buy-button" hidden>Buy</button>
+                <br/>
+                
+                <form name = "order-info"  id="order-info" hidden >
+                    <br/>
+                    
+                    
+                    <fieldset>
+                        <legend>Please fill all fields-info!</legend>
+                                       
+                    <label for="costName">Your Name:</label>
+                    <input type="text" name="costName" id="costName" placeholder="Name"  required>
+                    <br/>
+                    <br/>
+                    <label for="city">Your City:</label>
+                    <select name="city" id="city"  required>Your City:
+                        
+                        <option value="0">Your City</option>
+                        <option value="1">Kyiv</option>
+                        <option value="2">Odesa</option>
+                        <option value="3">Zhmerinka</option>
+                        <option value="4">Mykolaiv</option>
+                        
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="depotNum">Your Depot(#NP)</label>
+                    <input type="number" name="depotNum" id="depotNum" min="1", max="100" placeholder="0"  required>
+                    <br/>
+                    <br/>
+                    
+                    <fieldset>
+                        <legend>Method paying:</legend>
+                        <label for="payCash">Afterpay Cash</label>
+                        <input type="radio" name="payMeth" id="payCash">
+                        <br>
+                        <label for="payCard"> Card(VISA/MC)</label>
+                        <input type="radio" name="payMeth" id="payCard" >
+                        <br>
+                    </fieldset>
+                    
+                    <br>  
+                    <label for="itemQtt">Qtt item?</label>
+                    <input type="number" name="itemQtt" id="itemQtt" min="0" placeholder="0" required>
+                    <br>
+                    
+                    <!-- <button id="buy-button" hidden>Buy</button> -->
+                    
+                    
+                    <p id="error" style="color:red ;">
+                    </p>
+                </fieldset>
+
+
+            </form>
+            <br>
+            <div id="message" hidden>The product has been added to the basket</div>
+        </div>
+        <p id="res_mess" style="color:rgb(47, 0, 255) ;" hidden>
+    </div>
+    </p>
+        <button id="shw_info-button">Show stored order</button>
+        <br/>
+</div>
+
+<script src="./index.js"></script>
+</body>
+
+</html>
