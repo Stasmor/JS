@@ -272,7 +272,7 @@ function handlerButtonBuy(ev){
     //clear all after buy
 
     form.setAttribute('hidden','');
-    form.reset();
+  // form.reset();
     
     prod.setAttribute('hidden','');
     descript.setAttribute('hidden','');

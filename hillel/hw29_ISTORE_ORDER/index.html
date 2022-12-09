@@ -32,13 +32,13 @@
         li:active {
             color: blue;
         }
-
+        
         button {
             padding: 0.5rem 2rem;
             margin: 1rem 0;
             cursor: pointer;
         }
-    </style>
+        </style>
 </head>
 
 <body>
@@ -56,6 +56,9 @@
                 </div>
                 
                 <button id="basket-button" hidden>Add2Basket</button>
+                <br/>
+                
+                <button id="buy-button" hidden>Buy</button>
                 <br/>
                 
                 <form name = "order-info"  id="order-info" hidden >
@@ -97,8 +100,6 @@
                     <input type="number" name="itemQtt" id="itemQtt" min="0" placeholder="0" required>
                     <br>
 
-                    <button id="buy-button" hidden>Buy</button>
-                    <br/>
                     
                     <p id="error" style="color:red ;">
                     </p>
