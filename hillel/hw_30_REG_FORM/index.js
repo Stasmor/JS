@@ -30,29 +30,21 @@ function handlerButton(){
 
     costumer.addr = formEl.addr.value;
       
-    let selected = langSelector.selectedOptions;
+    let selected = langSelector.elements;
     let selRes = '';
     for (let i = 0; i < selected.length; i++) {
-        selRes+=selected[i].label+';';
+        if(selected[i].checked) selRes+=selected[i].value+';';
     }
+
     costumer.lang = selRes;
-
-
-
+   
     ////checking in_data////
     let resCheck = checkAllField();
     if(resCheck !== '') {errorLine.textContent = checkAllField(); return;} 
     ///////////////////////
 
-
-    
-
     res_message.innerHTML=`<pre>${JSON.stringify(costumer, null, 4)}<pre>` //'you order:'+orders;
-    res_message.removeAttribute('hidden');
-    //errorLine.innerHTML=`<pre>${JSON.stringify(order, null, 4)}<pre>` //'you order:'+orders;
-    console.log({costumer});
-
-    
+    res_message.removeAttribute('hidden'); 
 }
 
 function checkAllField(){

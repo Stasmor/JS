@@ -57,13 +57,22 @@
                 <br/>
                 <br/>
 
-                <label for="lang">Your Lang:</label>
-                <select name="lang" id="lang" multiple required>Your lang:
-                    <option value="0">Your lang:</option>
-                    <option value="1">Ukraine</option>
-                    <option value="2">English</option>
-                    <option value="3">Urdu</option>
-                </select>
+                <fieldset id="lang">
+                    <legend>Your Lang:</legend>
+                    <div>
+                      <input type="checkbox" id="eng" name="lang" value="English" />
+                      <label for="eng">English</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="ukr" name="lang" value="Ukraine" />
+                      <label for="ukr">Ukraine</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="urd" name="lang" value="Urdu" />
+                        <label for="urd">Urdu</label>
+                      </div>
+                  </fieldset>
+
                 <br/>
                 <br/>
                 <input type="button" value="submit" id="btn">
