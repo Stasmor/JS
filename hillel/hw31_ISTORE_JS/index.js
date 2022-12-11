@@ -224,6 +224,9 @@ function ordUpd(list) {
 
 function handlerCategoryClick(ev){
 
+  clrscr();
+  res_message.setAttribute('hidden','');
+
   const varList = ev.target.hasAttribute('data-category-Id') ? 'categories': 'order'; // flag category|order selection
   // console.log('data_attr=', varList);
   const selCategory = (varList === 'categories') ? ev.target.dataset.categoryId : ev.target.dataset.orderId;
@@ -389,6 +392,7 @@ function clrscr(){
   buttonBasket.setAttribute('hidden','');
   buttonBuy.setAttribute('hidden','');
   message.setAttribute('hidden','');
+  errorLine.innerText='';
 
 }
 
@@ -399,3 +403,4 @@ buttonBuy.addEventListener("click",handlerButtonBuy);
 buttonBasket.addEventListener("click",handlerButtonBasketClick);
 buttonOrdersShow.addEventListener("click",showStoreOrders);
 removeKeys.addEventListener("click",removeOrder);
+// form.addEventListener('visibilitychange',()=>{alert('form_change')});
