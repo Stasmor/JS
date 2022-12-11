@@ -333,6 +333,18 @@ function showStoreOrders(){
 
   clrscr();
 
+  if(buttonOrdersShow.dataset.showingVar !== 'info') {
+
+    buttonOrdersShow.dataset.showingVar = 'info';
+    removeKeys.innerHTML = '';
+    prod.addEventListener("click", handlerProductClick);
+    buttonOrdersShow.innerText='Show stored order';
+    categoryUpd(categories);
+    return;
+  }
+            
+  //removeKeys.removeAttribute('hidden');
+
   res_message.setAttribute('hidden','');
   prod.removeEventListener("click", handlerProductClick);
 
@@ -352,6 +364,9 @@ function showStoreOrders(){
   
   cat.innerHTML = letters;
   removeKeys.innerHTML = btns_line;
+
+  buttonOrdersShow.dataset.showingVar = 'to ordering';
+  buttonOrdersShow.innerText='back to Store';
   
 };
 
@@ -359,6 +374,7 @@ function removeOrder(ev){
   const remTarget = ev.target.dataset.orderId;
   // console.warn('ID 4 rem =', remTarget);  
   // console.log('deleteEl=', ordersM.splice(ordersM.find(obj => obj.id === remTarget),1));
+    buttonOrdersShow.dataset.showingVar = 'info';
   if(confirm(`Do you want Remove order #${remTarget} ?`)) {
     localStorage.removeItem(remTarget)
     showStoreOrders();
