@@ -43,7 +43,13 @@
 
 const getData = function(url, callback){
     fetch(url)
-        .then(response => {if(response.status === 200) { return response.json()} else throw 'error';})
+        // .then(response => {if(response.status === 200) { return response.json()} else throw 'error';})
+        .then(response=> {
+            if(!response.ok) {
+             throw new Error(`fetch err:${response.status}`);
+            }
+            return response.json();
+        })
         .then(json => { callback(`<pre>${JSON.stringify(json,null,4)}<pre>`)}) 
         .catch(err => alert(`catch+ ${err}`))
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Posts from "jsonplaceholder"...</h1>
+    <fieldset style="width: 200px;">
+        <legend>Your input num</legend>
+            <label for="numInpt"># post:</label>
+            <input type="number" id="numInpt" value="1" min="1" max="100">
+            <br>
+            <br>
+            <input type="button" value="Get post" id="submt">
+            <input type="button" value="Get comment" id="getCom" hidden>
+    </fieldset>
+
+    <p>result post:</p>
+    <p id="outPost"></p>
+    <br>
+    <p>Commets to post:</p>
+    <p id="outComm"></p>
+
+    <!-- <textarea textarea name="" id="outComm" cols="100" rows="10">resultArea</textarea> -->
+
+    <script src="index.js"></script>
+</body>
+</html>
