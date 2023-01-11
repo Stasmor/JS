@@ -1,30 +1,37 @@
-import {products} from './products.js';
-
-// import {meth4Orders} from './meth4Orders.js';
-// console.warn('inside 0 index.js');
-// const tmp = new meth4Orders
-// const addingOrder = tmp.addingOrder
+import {products} from './products.js';//,orderBase
+import {addingOrder} from './meth4Orders.js';
 
 
-export const orderBase = {};
+ let orderBase =  [];
+ let flagPresents = null;
+window.addEventListener('popstate',()=>{ console.warn('inside product.js_ev_popstate'); window.location.reload()});//forward/backwards go+
 
-
-
+// localStorage.clear();
 
  let qntr=0;
-// const order = {};
 
-const prodList = document.querySelector('#prodList');
 
-export function addingOrder(order){  //експортю для викор-ння по кнопці у product.js
-    const tmstamp = new Date();
-  
-     let orderNum = order.id +'_'+ String(tmstamp.valueOf()).slice(6,);// create unic ORDER ID
-    
-     orderBase[orderNum] = JSON.stringify(order,null,4)//pushing this order to object of orders
-    //  localStorage.setItem(orderNum,JSON.stringify(order,null,4));
-    console.log({orderBase});
-  }
+const prodList = document.getElementById('prodList');
+
+
+(function(){
+    const sttObj=(history.state===null) ? null:Object.assign({},history.state);
+   
+    if(history.state !== null){
+        orderBase = history.state;
+        history.pushState(null,'','');
+        addKeyShowFullOrder();
+     }
+  })();
+
+function addKeyShowFullOrder(){
+    let ordPlace = document.querySelector(".title__link");//adding order viewing with btn click
+    let a = document.createElement('button');
+    a.innerText='track order';
+    ordPlace.insertAdjacentElement('afterend',a)
+    a.addEventListener('click',()=>{redirect(null,orderBase)})
+    flagPresents = 1;
+}
 
 function addProd(model,valObj){
     const prodModelNew = model;
@@ -37,13 +44,12 @@ function addProd(model,valObj){
     prodModelNew.addEventListener("click",(ev)=>{
         // console.log(ev.target.tagName);
         if(ev.target.tagName === 'BUTTON' )  {
-            console.warn('this is a btn!!!');
-            addingOrder(valObj);
+            if(flagPresents === null) addKeyShowFullOrder();//
+            addingOrder(valObj,orderBase);
         } else {
-            redirect(valObj)
+            redirect(valObj,orderBase)
         }
     }); 
-    // prodModelNew.childNodes[4].addEventListener("click",()=>{redirect(valObj)}); 
     prodList.appendChild(prodModelNew);
     qntr+=1;
 }
@@ -63,6 +69,7 @@ function addProd(model,valObj){
 // }
 
 function addStruct(parent){
+    // console.warn(`parent in addStruct=${parent}`);
     const attr = ["product__title","product__image","product__price","product__btn"];
    
     const mainDiv = document.createElement('div')
@@ -81,28 +88,20 @@ function addStruct(parent){
     mainDiv.appendChild(fragment);
     mainDiv.appendChild(btn);
 
-    console.warn('inside addStruct()');
+    // console.warn('inside addStruct()+parent',parent);
     return parent.appendChild(mainDiv);
 }
 
-console.warn('inside index.js');
-showActiveProd();
+if(history.state===null && prodList!==null) showActiveProd(); 
 
-function redirect(item) { 
-    history.pushState(item,'redirect','./product.html');
-    history.go(0);  
-
-    //  location.assign('./product.html')
-    console.warn('after go!!!$$$$$');
-    console.warn('after go!!!$$$$$');
-    console.warn('after go!!!$$$$$');
-    console.warn('after go!!!$$$$$');
-    console.warn('after go!!!$$$$$');
-    console.warn('after go!!!$$$$$');
-    
+function redirect(item,orderList) { 
+    // console.warn('in redirect...');
+    history.pushState({item, base: orderList},'redirect','./product.html');
+    history.go(0);     
 }
 
 function showActiveProd(){
+    console.log('in showActiveProd');
     products.forEach((elem)=>{
         console.log('before show actProd');
         addProd(addStruct(prodList), elem);
@@ -113,11 +112,10 @@ function showActiveProd(){
 }
 
 
-
 // // third part of lesson task
-// import MyCustomElement from './oop.js'
-// const newObjEl = new MyCustomElement("_","div","MyCustomElement").addClass("products_new").addId("prodList_new").removeAttr("class")
-// newObjEl.addAttr('type','text') 
-// document.querySelector('.container').insertAdjacentElement('beforeend',newObjEl.newElem)//insert after all
+import MyCustomElement from './oop.js'
+const newObjEl = new MyCustomElement("_","div","MyCustomElement").addClass("products_new").addId("prodList_new").removeAttr("class")
+newObjEl.addAttr('type','text') 
+document.querySelector('.container').insertAdjacentElement('beforeend',newObjEl.newElem)//insert after all
 
 // console.warn('***end.index.js');
